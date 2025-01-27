@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البحث عن شريك - سولي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dating.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .sidebar-header .logo {
+            width: 120px;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .sidebar-header .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.5));
+            animation-play-state: paused;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: glowPulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            padding: 10px 20px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .sidebar-nav a.active {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            margin-right: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-right: 0;
+            }
+        }
+
+        /* تنسيقات نتائج البحث */
+        .search-results {
+            padding: 20px;
+        }
+
+        .user-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .user-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .user-info i {
+            width: 20px;
+            color: #ff6b6b;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .interest-tag {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .view-profile-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .view-profile-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        /* زر الاختبار */
+        .test-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .test-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+    <!-- إضافة مكتبات Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics-compat.js"></script>
+    <!-- إضافة ملف التكوين -->
+    <script src="js/firebase-config.js"></script>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="سولي" class="logo" style="width: 120px; margin: 0 auto; display: block;">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dating-chat.html">
+                        <i class="fas fa-comments"></i>
+                        <span>المحادثات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-search.html" class="active">
+                        <i class="fas fa-search"></i>
+                        <span>البحث عن شريك</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="سولي" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="dating-chat.html">المحادثات</a></li>
+                <li><a href="dating-profile.html">الملف الشخصي</a></li>
+                <li><a href="dating-search.html" class="active">البحث عن شريك</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <main class="search-main">
+            <!-- قسم البحث المتقدم -->
+            <section class="search-section">
+                <h2>البحث عن شريك الحياة</h2>
+                <div class="search-filters">
+                    <div class="filter-group">
+                        <label>العمر</label>
+                        <div class="age-range">
+                            <input type="number" id="min-age" placeholder="من">
+                            <span>-</span>
+                            <input type="number" id="max-age" placeholder="إلى">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>المدينة</label>
+                        <select id="city-filter">
+                            <option value="">اختر المدينة</option>
+                            <option value="طرابلس">طرابلس</option>
+                            <option value="بنغازي">بنغازي</option>
+                            <option value="مصراتة">مصراتة</option>
+                            <option value="البيضاء">البيضاء</option>
+                            <option value="طبرق">طبرق</option>
+                            <option value="زليتن">زليتن</option>
+                            <option value="صبراتة">صبراتة</option>
+                            <option value="الزاوية">الزاوية</option>
+                            <option value="سبها">سبها</option>
+                            <option value="الخمس">الخمس</option>
+                            <option value="درنة">درنة</option>
+                            <option value="غريان">غريان</option>
+                            <option value="سرت">سرت</option>
+                            <option value="اجدابيا">اجدابيا</option>
+                            <option value="المرج">المرج</option>
+                            <option value="زوارة">زوارة</option>
+                            <option value="يفرن">يفرن</option>
+                            <option value="نالوت">نالوت</option>
+                            <option value="الكفرة">الكفرة</option>
+                            <option value="ترهونة">ترهونة</option>
+                            <option value="بني وليد">بني وليد</option>
+                            <option value="توكرة">توكرة</option>
+                            <option value="الأصابعة">الأصابعة</option>
+                            <option value="براك">براك</option>
+                            <option value="الجميل">الجميل</option>
+                            <option value="رقدالين">رقدالين</option>
+                            <option value="الزنتان">الزنتان</option>
+                            <option value="جادو">جادو</option>
+                            <option value="مرزق">مرزق</option>
+                            <option value="هون">هون</option>
+                            <option value="ودان">ودان</option>
+                            <option value="غدامس">غدامس</option>
+                            <option value="غات">غات</option>
+                            <option value="العجيلات">العجيلات</option>
+                            <option value="القبة">القبة</option>
+                            <option value="تاورغاء">تاورغاء</option>
+                            <option value="مزدة">مزدة</option>
+                            <option value="البريقة">البريقة</option>
+                            <option value="الأبيار">الأبيار</option>
+                            <option value="سلوق">سلوق</option>
+                            <option value="الماية">الماية</option>
+                            <option value="القيقب">القيقب</option>
+                            <option value="سوسة">سوسة</option>
+                            <option value="راس لانوف">راس لانوف</option>
+                            <option value="الجغبوب">الجغبوب</option>
+                            <option value="العزيزية">العزيزية</option>
+                            <option value="مسلاتة">مسلاتة</option>
+                            <option value="زلطن">زلطن</option>
+                            <option value="رأس جدير">رأس جدير</option>
+                            <option value="سيدي السائح">سيدي السائح</option>
+                            <option value="قصر بن غشير">قصر بن غشير</option>
+                            <option value="تاجوراء">تاجوراء</option>
+                            <option value="قصر الأخيار">قصر الأخيار</option>
+                            <option value="الخمس">الخمس</option>
+                            <option value="زلة">زلة</option>
+                            <option value="جالو">جالو</option>
+                            <option value="أوجلة">أوجلة</option>
+                            <option value="مرادة">مرادة</option>
+                            <option value="البطنان">البطنان</option>
+                            <option value="أم الرزم">أم الرزم</option>
+                            <option value="عين زارة">عين زارة</option>
+                            <option value="قمينس">قمينس</option>
+                            <option value="الرجبان">الرجبان</option>
+                            <option value="الجفرة">الجفرة</option>
+                            <option value="سوكنة">سوكنة</option>
+                            <option value="الشويرف">الشويرف</option>
+                            <option value="الرياينة">الرياينة</option>
+                            <option value="نسمة">نسمة</option>
+                            <option value="ككلة">ككلة</option>
+                            <option value="الحرابة">الحرابة</option>
+                            <option value="تيجي">تيجي</option>
+                            <option value="الرحيبات">الرحيبات</option>
+                            <option value="سيدي خليفة">سيدي خليفة</option>
+                            <option value="قصر ليبيا">قصر ليبيا</option>
+                            <option value="الأبرق">الأبرق</option>
+                            <option value="امساعد">امساعد</option>
+                            <option value="البردي">البردي</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>الحالة الاجتماعية</label>
+                        <select id="status-filter">
+                            <option value="">الكل</option>
+                            <option value="single">أعزب/عزباء</option>
+                            <option value="linked">مرتبط/مرتبطة</option>
+                            <option value="married">متزوج/متزوجة</option>
+                            <option value="divorced">مطلق/مطلقة</option>
+                            <option value="widowed">أرمل/أرملة</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>الاهتمامات</label>
+                        <div class="interests-filter" id="interests-filter">
+                            <!-- سيتم إضافة الاهتمامات ديناميكياً -->
+                        </div>
+                    </div>
+                    <button class="search-btn" onclick="searchProfiles()">
+                        <i class="fas fa-search"></i> بحث
+                    </button>
+                </div>
+            </section>
+
+            <!-- قسم نتائج البحث -->
+            <section class="search-results">
+                <div id="results-container">
+                    <!-- سيتم إضافة النتائج هنا -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- زر الاختبار -->
+    <button class="test-btn" onclick="runTest()">
+        <i class="fas fa-vial"></i> اختبار النظام
+    </button>
+
+    <script>
+        let currentUnsubscribe = null;
+
+        // دالة البحث
+        async function searchProfiles() {
+            try {
+                // إلغاء المراقبة السابقة إذا وجدت
+                if (currentUnsubscribe) {
+                    currentUnsubscribe();
+                }
+
+                const cityFilter = document.getElementById('city-filter').value;
+                const statusFilter = document.getElementById('status-filter').value;
+                const minAgeFilter = document.getElementById('min-age').value;
+                const maxAgeFilter = document.getElementById('max-age').value;
+
+                const filters = {
+                    city: cityFilter,
+                    status: statusFilter,
+                    minAge: minAgeFilter,
+                    maxAge: maxAgeFilter
+                };
+
+                // بدء مراقبة جديدة
+                currentUnsubscribe = window.firebaseApp.watchFilteredUsers(filters, (users) => {
+                    displayResults(users);
+                });
+            } catch (error) {
+                console.error('خطأ في البحث:', error);
+                alert('حدث خطأ أثناء البحث. الرجاء المحاولة مرة أخرى.');
+            }
+        }
+
+        // دالة عرض النتائج
+        function displayResults(users) {
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            if (users.length === 0) {
+                container.innerHTML = '<p class="no-results">لم يتم العثور على نتائج</p>';
+                return;
+            }
+
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                userCard.innerHTML = `
+                    <div class="user-image">
+                        <img src="${user.profileImage || 'images/default-avatar.png'}" alt="${user.name}">
+                    </div>
+                    <div class="user-info">
+                        <h3>${user.name}</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> ${user.city}</p>
+                        <p><i class="fas fa-info-circle"></i> ${user.status}</p>
+                        <p><i class="fas fa-user"></i> ${user.age} سنة</p>
+                        <p class="bio">${user.bio || 'لا توجد نبذة'}</p>
+                        <div class="interests">
+                            ${user.interests ? user.interests.map(interest => 
+                                `<span class="interest-tag">${interest}</span>`
+                            ).join('') : ''}
+                        </div>
+                        <button class="view-profile-btn" onclick="viewProfile('${user.id}')">
+                            عرض الملف الشخصي
+                        </button>
+                    </div>
+                `;
+                container.appendChild(userCard);
+            });
+        }
+
+        // عند تحميل الصفحة، ابدأ بعرض جميع المستخدمين
+        window.addEventListener('load', () => {
+            currentUnsubscribe = window.firebaseApp.watchAllUsers((users) => {
+                displayResults(users);
+            });
+        });
+
+        // عند مغادرة الصفحة، قم بإلغاء المراقبة
+        window.addEventListener('beforeunload', () => {
+            if (currentUnsubscribe) {
+                currentUnsubscribe();
+            }
+        });
+
+        // دالة عرض الملف الشخصي
+        function viewProfile(userId) {
+            window.location.href = `dating-profile.html?id=${userId}`;
+        }
+
+        // دالة تشغيل الاختبار
+        async function runTest() {
+            try {
+                const result = await window.firebaseApp.testFirebase();
+                if (result) {
+                    alert('تم اكتمال الاختبار بنجاح! تحقق من وحدة تحكم المتصفح (F12) لرؤية النتائج التفصيلية.');
+                } else {
+                    alert('فشل الاختبار. تحقق من وحدة تحكم المتصفح (F12) لمعرفة التفاصيل.');
+                }
+            } catch (error) {
+                console.error('خطأ في تشغيل الاختبار:', error);
+                alert('حدث خطأ أثناء تشغيل الاختبار.');
+            }
+        }
+    </script>
+</body>
+</html>

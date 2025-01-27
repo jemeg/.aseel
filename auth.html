@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سولي - تسجيل الدخول باستخدام GitHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-loading">
+        <div class="spinner"></div>
+        <p>جاري التحقق من هويتك...</p>
+    </div>
+
+    <script type="module">
+        import githubAPI from './js/github-api.js';
+        import db from './js/database.js';
+
+        // معالجة استجابة GitHub
+        async function handleAuthResponse() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const state = urlParams.get('state');
+
+            if (code && state) {
+                try {
+                    // التحقق من رمز التفويض
+                    const success = await githubAPI.handleCallback(code, state);
+                    if (success) {
+                        // جلب بيانات المستخدم من GitHub
+                        const githubUser = await githubAPI.getUserData();
+                        
+                        if (githubUser) {
+                            // إنشاء أو تحديث بيانات المستخدم في قاعدة البيانات
+                            const userData = {
+                                username: githubUser.login,
+                                fullName: githubUser.name || githubUser.login,
+                                email: githubUser.email,
+                                githubId: githubUser.id.toString(),
+                                avatarUrl: githubUser.avatar_url,
+                                createdAt: new Date().toISOString()
+                            };
+
+                            // حفظ البيانات في Gist
+                            const gist = await githubAPI.createGist(userData);
+                            if (gist.id) {
+                                userData.gistId = gist.id;
+                            }
+
+                            // حفظ في قاعدة البيانات المحلية
+                            const result = await db.addOrUpdateGitHubUser(userData);
+                            
+                            if (result.success) {
+                                // تخزين معرف الجلسة
+                                localStorage.setItem('sessionId', result.sessionId);
+                                localStorage.setItem('userData', JSON.stringify(result.user));
+                                
+                                // التحويل إلى الصفحة الرئيسية
+                                window.location.href = 'index.html';
+                                return;
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error during GitHub auth:', error);
+                }
+            }
+
+            // في حالة حدوث خطأ
+            window.location.href = 'login.html?error=auth_failed';
+        }
+
+        // تنفيذ المعالجة عند تحميل الصفحة
+        handleAuthResponse();
+    </script>
+</body>
+</html>

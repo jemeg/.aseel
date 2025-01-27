@@ -1,0 +1,25 @@
+[debug] [2025-01-27T03:23:23.310Z] ----------------------------------------------------------------------
+[debug] [2025-01-27T03:23:23.312Z] Command:       C:\Users\almaj\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\almaj\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase init
+[debug] [2025-01-27T03:23:23.312Z] CLI Version:   13.29.2
+[debug] [2025-01-27T03:23:23.312Z] Platform:      win32
+[debug] [2025-01-27T03:23:23.312Z] Node Version:  v18.5.0
+[debug] [2025-01-27T03:23:23.313Z] Time:          Mon Jan 27 2025 05:23:23 GMT+0200 (GMT+02:00)
+[debug] [2025-01-27T03:23:23.313Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-27T03:23:23.526Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-27T03:23:23.526Z] > authorizing via signed-in user (mohamedghazwan48@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  c:\Users\almaj\OneDrive\المستندات\Desktop\سولي
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

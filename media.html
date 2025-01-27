@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة الوسائط - سولي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="سولي" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن سولي</a></li>
+                <li><a href="calendar.html">المناسبات</a></li>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="love.html">كلمات من القلب</a></li>
+                <li><a href="game.html">دردشة القلوب</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="media.html"class="active">المكتبة</a></li>
+                <li><a href="planner.html">التخطيط</a></li>
+                <li><a href="tests.html">الاختبارات</a></li>
+                <li><a href="professionals.html">المحترفين</a></li>
+                <li><a href="forum.html">المنتدى</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="media-container">
+            <!-- قسم البحث والتصفية -->
+            <section class="media-search">
+                <div class="search-bar">
+                    <input type="text" placeholder="ابحث في المكتبة..." class="search-input">
+                    <select class="media-filter">
+                        <option value="all">كل الوسائط</option>
+                        <option value="videos">فيديو</option>
+                        <option value="audio">صوتيات</option>
+                        <option value="images">صور</option>
+                    </select>
+                    <button class="btn search-btn">بحث</button>
+                </div>
+            </section>
+
+            <!-- مقاطع الفيديو التعليمية -->
+            <section class="videos-section">
+                <h2>فيديوهات تعليمية</h2>
+                <div class="media-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="video1.jpg" alt="فيديو تعليمي">
+                            <span class="duration">15:30</span>
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="video-info">
+                            <h4>كيف تبني علاقات صحية؟</h4>
+                            <p>نصائح مهمة لبناء علاقات قوية ودائمة</p>
+                            <div class="video-meta">
+                                <span>1000 مشاهدة</span>
+                                <span>قبل أسبوع</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="video2.jpg" alt="فيديو تعليمي">
+                            <span class="duration">12:45</span>
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="video-info">
+                            <h4>فن التواصل العاطفي</h4>
+                            <p>تعلم أساسيات التواصل العاطفي الفعال</p>
+                            <div class="video-meta">
+                                <span>850 مشاهدة</span>
+                                <span>قبل 3 أيام</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- التسجيلات الصوتية -->
+            <section class="audio-section">
+                <h2>تسجيلات صوتية للتأمل</h2>
+                <div class="media-grid">
+                    <div class="audio-card">
+                        <div class="audio-info">
+                            <h4>تأمل للسلام الداخلي</h4>
+                            <p>جلسة تأمل للشعور بالهدوء والسكينة</p>
+                        </div>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="meditation1.mp3" type="audio/mpeg">
+                                متصفحك لا يدعم تشغيل الملفات الصوتية.
+                            </audio>
+                            <div class="audio-meta">
+                                <span>10:00</span>
+                                <span>500 استماع</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="audio-card">
+                        <div class="audio-info">
+                            <h4>تمارين التنفس العميق</h4>
+                            <p>تمارين للاسترخاء والتخلص من التوتر</p>
+                        </div>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="breathing.mp3" type="audio/mpeg">
+                                متصفحك لا يدعم تشغيل الملفات الصوتية.
+                            </audio>
+                            <div class="audio-meta">
+                                <span>15:00</span>
+                                <span>750 استماع</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- معرض الصور -->
+            <section class="images-section">
+                <h2>صور ملهمة</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="inspiration1.jpg" alt="صورة ملهمة">
+                        <div class="gallery-overlay">
+                            <h4>لحظات سعيدة</h4>
+                            <button class="btn download-btn">تحميل</button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="inspiration2.jpg" alt="صورة ملهمة">
+                        <div class="gallery-overlay">
+                            <h4>مشاعر دافئة</h4>
+                            <button class="btn download-btn">تحميل</button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="inspiration3.jpg" alt="صورة ملهمة">
+                        <div class="gallery-overlay">
+                            <h4>ذكريات جميلة</h4>
+                            <button class="btn download-btn">تحميل</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- المجموعات المقترحة -->
+            <section class="playlists-section">
+                <h2>مجموعات مقترحة</h2>
+                <div class="playlists-grid">
+                    <div class="playlist-card">
+                        <h4>بداية جديدة</h4>
+                        <p>مجموعة متنوعة للبدء في رحلة التطور العاطفي</p>
+                        <ul class="playlist-items">
+                            <li>3 فيديوهات</li>
+                            <li>2 تسجيلات صوتية</li>
+                            <li>5 صور ملهمة</li>
+                        </ul>
+                        <button class="btn">عرض المجموعة</button>
+                    </div>
+
+                    <div class="playlist-card">
+                        <h4>تنمية المشاعر</h4>
+                        <p>محتوى مختار لتعزيز الذكاء العاطفي</p>
+                        <ul class="playlist-items">
+                            <li>4 فيديوهات</li>
+                            <li>3 تسجيلات صوتية</li>
+                            <li>6 صور ملهمة</li>
+                        </ul>
+                        <button class="btn">عرض المجموعة</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#">رفع محتوى</a></li>
+                    <li><a href="#">المفضلة</a></li>
+                    <li><a href="#">مجموعاتي</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2025 سولي</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="js/media.js"></script>
+</body>
+</html>

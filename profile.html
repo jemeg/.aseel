@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - سولي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">سولي</a>
+            </div>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن سولي</a></li>
+                <li><a href="calendar.html">المناسبات</a></li>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="love.html">كلمات من القلب</a></li>
+                <li><a href="game.html">دردشة القلوب</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="media.html">المكتبة</a></li>
+                <li><a href="planner.html">التخطيط</a></li>
+                <li><a href="tests.html">الاختبارات</a></li>
+                <li><a href="professionals.html">المحترفين</a></li>
+                <li><a href="forum.html">المنتدى</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="profile.html"class="active">الملف الشخصي</a></li>
+                <li><a href="login.html" onclick="logout()">تسجيل الخروج</a></li>
+            </ul>
+            <div class="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="profile-grid">
+                <!-- قسم المعلومات الأساسية -->
+                <div class="profile-card main-info">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="images/default-avatar.png" alt="الصورة الشخصية" id="profileImage">
+                            <button class="change-avatar" onclick="document.getElementById('avatarInput').click()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                            <input type="file" id="avatarInput" accept="image/*" style="display: none">
+                        </div>
+                        <h2 id="userDisplayName">اسم المستخدم</h2>
+                        <p class="user-status">متصل</p>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">25</span>
+                            <span class="stat-label">المشاركات</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">142</span>
+                            <span class="stat-label">التعليقات</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">15</span>
+                            <span class="stat-label">المتابعون</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم المعلومات الشخصية -->
+                <div class="profile-card personal-info">
+                    <h3>المعلومات الشخصية</h3>
+                    <form id="personalInfoForm">
+                        <div class="form-group">
+                            <label for="fullname">الاسم الكامل</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">اسم المستخدم</label>
+                            <input type="text" id="username" name="username" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">نبذة شخصية</label>
+                            <textarea id="bio" name="bio" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">حفظ المعلومات</button>
+                    </form>
+                </div>
+
+                <!-- قسم الأمان -->
+                <div class="profile-card security">
+                    <h3>الأمان</h3>
+                    <form id="securityForm">
+                        <div class="form-group">
+                            <label for="currentPassword">كلمة المرور الحالية</label>
+                            <div class="password-input-container">
+                                <input type="password" id="currentPassword" name="currentPassword">
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">كلمة المرور الجديدة</label>
+                            <div class="password-input-container">
+                                <input type="password" id="newPassword" name="newPassword">
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">تأكيد كلمة المرور الجديدة</label>
+                            <div class="password-input-container">
+                                <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                                <button type="button" class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">تحديث كلمة المرور</button>
+                    </form>
+                </div>
+
+                <!-- قسم النشاطات الأخيرة -->
+                <div class="profile-card recent-activity">
+                    <h3>النشاطات الأخيرة</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-comment"></i>
+                            <div class="activity-content">
+                                <p>علقت على مقال "كيف تبني علاقات صحية"</p>
+                                <span class="activity-time">منذ 2 ساعة</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-heart"></i>
+                            <div class="activity-content">
+                                <p>أعجبك منشور "نصائح للتواصل الفعال"</p>
+                                <span class="activity-time">منذ 5 ساعات</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div class="activity-content">
+                                <p>نشرت مقال جديد "تجربتي في العلاقات"</p>
+                                <span class="activity-time">منذ يوم</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الإعدادات -->
+                <div class="profile-card settings">
+                    <h3>الإعدادات</h3>
+                    <form id="settingsForm">
+                        <div class="setting-item">
+                            <label class="switch-label">
+                                <span>إشعارات البريد الإلكتروني</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="switch-label">
+                                <span>الوضع الليلي</span>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="switch-label">
+                                <span>إظهار الحالة للجميع</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 سولي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقويم المناسبات - سولي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="سولي" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن سولي</a></li>
+                <li><a href="calendar.html"class="active">المناسبات</a></li>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="love.html">كلمات من القلب</a></li>
+                <li><a href="game.html">دردشة القلوب</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="media.html">المكتبة</a></li>
+                <li><a href="planner.html">التخطيط</a></li>
+                <li><a href="tests.html">الاختبارات</a></li>
+                <li><a href="professionals.html">المحترفين</a></li>
+                <li><a href="forum.html">المنتدى</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="calendar-page">
+        <div class="calendar-container">
+            <section class="calendar-hero">
+                <h1>تقويم المناسبات الخاصة</h1>
+                <p>تتبع مناسباتك المهمة واحصل على أفكار مميزة للاحتفال</p>
+                <div class="calendar-actions">
+                    <button class="btn primary" onclick="addNewEvent()">
+                        <i class="fas fa-plus"></i>
+                        إضافة مناسبة جديدة
+                    </button>
+                    <button class="btn secondary" onclick="showCategories()">
+                        <i class="fas fa-filter"></i>
+                        تصفية المناسبات
+                    </button>
+                </div>
+            </section>
+
+            <div class="calendar-grid-container">
+                <!-- قسم التقويم -->
+                <section class="main-calendar">
+                    <div class="calendar-header">
+                        <button class="btn" id="prevMonth">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <h2 id="currentMonth">يناير 2025</h2>
+                        <button class="btn" id="nextMonth">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-body">
+                        <div class="weekdays">
+                            <span>الأحد</span>
+                            <span>الإثنين</span>
+                            <span>الثلاثاء</span>
+                            <span>الأربعاء</span>
+                            <span>الخميس</span>
+                            <span>الجمعة</span>
+                            <span>السبت</span>
+                        </div>
+                        <div id="calendarDates" class="dates-grid"></div>
+                    </div>
+                </section>
+
+                <!-- قسم المناسبات القادمة -->
+                <section class="upcoming-events">
+                    <h2>المناسبات القادمة</h2>
+                    <div class="events-list">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">14</span>
+                                <span class="month">فبراير</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-category love">عيد الحب</div>
+                                <h3>عيد الحب العالمي</h3>
+                                <p>احتفل مع من تحب بهذه المناسبة الخاصة</p>
+                                <div class="event-actions">
+                                    <button class="btn btn-reminder" onclick="toggleReminder(event)">
+                                        <i class="fas fa-bell"></i>
+                                        تذكير
+                                    </button>
+                                    <button class="btn btn-ideas" onclick="showIdeas(event)">
+                                        <i class="fas fa-gift"></i>
+                                        أفكار
+                                    </button>
+                                    <button class="btn btn-delete" onclick="deleteEvent(event)">
+                                        <i class="fas fa-trash"></i>
+                                        حذف
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="day">21</span>
+                                <span class="month">مارس</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-category family">عيد الأم</div>
+                                <h3>عيد الأم</h3>
+                                <p>عبر عن حبك وتقديرك لأمك في يومها الخاص</p>
+                                <div class="event-actions">
+                                    <button class="btn btn-reminder" onclick="toggleReminder(event)">
+                                        <i class="fas fa-bell"></i>
+                                        تذكير
+                                    </button>
+                                    <button class="btn btn-ideas" onclick="showIdeas(event)">
+                                        <i class="fas fa-gift"></i>
+                                        أفكار
+                                    </button>
+                                    <button class="btn btn-delete" onclick="deleteEvent(event)">
+                                        <i class="fas fa-trash"></i>
+                                        حذف
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- قسم الأفكار والنصائح -->
+            <section class="celebration-tips">
+                <h2>أفكار ونصائح للاحتفال</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>أفكار هدايا مميزة</h3>
+                        <p>اكتشف مجموعة متنوعة من الأفكار الإبداعية للهدايا التي تناسب كل مناسبة</p>
+                        <a href="#" class="btn secondary">اكتشف الأفكار</a>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>توثيق اللحظات</h3>
+                        <p>نصائح لالتقاط أجمل الصور وتوثيق ذكرياتك في المناسبات الخاصة</p>
+                        <a href="#" class="btn secondary">اقرأ النصائح</a>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>لمسات رومانسية</h3>
+                        <p>أفكار لإضافة لمسات رومانسية تجعل مناسباتك أكثر خصوصية وجمالاً</p>
+                        <a href="#" class="btn secondary">اكتشف الأفكار</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li><a href="https://discord.gg/mbtTQp6Q6E">Discord</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; سولي 2025</p>
+        </div>
+    </footer>
+
+    <script src="js/calendar.js"></script>
+</body>
+</html>

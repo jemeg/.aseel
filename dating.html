@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المواعدة - سولي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dating.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .sidebar-header .logo {
+            width: 120px;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .sidebar-header .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.5));
+            animation-play-state: paused;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: glowPulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            padding: 10px 20px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .sidebar-nav a.active {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            margin-right: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="سولي" class="logo" style="width: 120px; margin: 0 auto; display: block;">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dating-chat.html">
+                        <i class="fas fa-comments"></i>
+                        <span>المحادثات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-search.html">
+                        <i class="fas fa-search"></i>
+                        <span>البحث عن شريك</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <!-- شريط التنقل -->
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.png" alt="شعار أسيل" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">عن سولي</a></li>
+                    <li><a href="calendar.html">المناسبات</a></li>
+                    <li><a href="dating.html"class="active">المواعدة</a></li>
+                    <li><a href="love.html">كلمات من القلب</a></li>
+                    <li><a href="game.html">دردشة القلوب</a></li>
+                    <li><a href="articles.html">المقالات</a></li>
+                    <li><a href="media.html">المكتبة</a></li>
+                    <li><a href="planner.html">التخطيط</a></li>
+                    <li><a href="tests.html">الاختبارات</a></li>
+                    <li><a href="professionals.html">المحترفين</a></li>
+                    <li><a href="forum.html">المنتدى</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="profile.html">الملف الشخصي</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="dating-landing">
+            <div class="welcome-section">
+                <h1>مرحباً بك في خدمة المواعدة</h1>
+                <p>اختر أحد الخيارات التالية للبدء:</p>
+                
+                <div class="features-grid">
+                    <a href="dating-chat.html" class="feature-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>المحادثات</h3>
+                        <p>تواصل مع شريك حياتك المحتمل</p>
+                    </a>
+                    
+                    <a href="dating-profile.html" class="feature-card">
+                        <i class="fas fa-user"></i>
+                        <h3>الملف الشخصي</h3>
+                        <p>عرض وتعديل ملفك الشخصي</p>
+                    </a>
+                    
+                    <a href="dating-search.html" class="feature-card">
+                        <i class="fas fa-search"></i>
+                        <h3>البحث عن شريك</h3>
+                        <p>ابحث عن شريك حياتك المناسب</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dating.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسيل - لعبة المحادثة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Lalezar&family=Rakkas&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="شعار أسيل" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن سولي</a></li>
+                <li><a href="calendar.html">المناسبات</a></li>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="love.html">كلمات من القلب</a></li>
+                <li><a href="game.html"class="active">دردشة القلوب</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="media.html">المكتبة</a></li>
+                <li><a href="planner.html">التخطيط</a></li>
+                <li><a href="tests.html">الاختبارات</a></li>
+                <li><a href="professionals.html">المحترفين</a></li>
+                <li><a href="forum.html">المنتدى</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="game-container">
+            <h1>دردشة القلوب الذكية</h1>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- الرسائل ستظهر هنا -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userMessage" placeholder="اكتب رسالتك هنا..." />
+                    <button id="sendMessage" class="btn">إرسال</button>
+                </div>
+            </div>
+            <div class="chat-options">
+                <h3>مواضيع مقترحة:</h3>
+                <div class="suggestion-buttons">
+                    <button class="suggestion-btn">كيف أعبر عن مشاعري؟</button>
+                    <button class="suggestion-btn">نصائح للعلاقات الناجحة</button>
+                    <button class="suggestion-btn">كيف أتجاوز الخجل؟</button>
+                    <button class="suggestion-btn">علامات الحب الحقيقي</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <h4>تواصل معنا</h4>
+            <ul>
+                <li><a href="https://discord.gg/mbtTQp6Q6E">Discord</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>جميع الحقوق محفوظة &copy; 2025 أسيل</p>
+    </div>
+</footer>
+<script src="game.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

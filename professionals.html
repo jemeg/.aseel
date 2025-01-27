@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحترفين - سولي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="سولي" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">عن سولي</a></li>
+                <li><a href="calendar.html">المناسبات</a></li>
+                <li><a href="dating.html">المواعدة</a></li>
+                <li><a href="love.html">كلمات من القلب</a></li>
+                <li><a href="game.html">دردشة القلوب</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="media.html">المكتبة</a></li>
+                <li><a href="planner.html">التخطيط</a></li>
+                <li><a href="tests.html">الاختبارات</a></li>
+                <li><a href="professionals.html"class="active">المحترفين</a></li>
+                <li><a href="forum.html">المنتدى</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="professionals-container">
+            <!-- قسم الترحيب -->
+            <section class="professionals-hero">
+                <h1>استشر خبراء العلاقات</h1>
+                <p>نخبة من المتخصصين في مجال العلاقات والإرشاد الزوجي</p>
+                <div class="search-experts">
+                    <input type="text" placeholder="ابحث عن مستشار...">
+                    <select>
+                        <option value="">جميع التخصصات</option>
+                        <option value="relationship">علاقات</option>
+                        <option value="marriage">زواج</option>
+                        <option value="family">أسرة</option>
+                        <option value="personal">تطوير شخصي</option>
+                    </select>
+                    <button class="btn btn-primary">بحث</button>
+                </div>
+            </section>
+
+            <!-- قائمة المحترفين -->
+            <section class="experts-list">
+                <h2>المستشارون المتاحون</h2>
+                <div class="experts-grid">
+                    <!-- مستشار 1 -->
+                    <div class="expert-card">
+                        <div class="expert-header">
+                            <img src="expert1.jpg" alt="د. أحمد محمد">
+                            <div class="expert-status online"></div>
+                        </div>
+                        <div class="expert-info">
+                            <h3>د. أحمد محمد</h3>
+                            <p class="expert-title">مستشار علاقات زوجية</p>
+                            <div class="expert-stats">
+                                <span><i class="fas fa-star"></i> 4.9</span>
+                                <span><i class="fas fa-user-friends"></i> 500+</span>
+                                <span><i class="fas fa-certificate"></i> موثق</span>
+                            </div>
+                            <p class="expert-bio">خبرة 15 عاماً في الإرشاد الزوجي والأسري</p>
+                            <button class="btn btn-primary">احجز استشارة</button>
+                        </div>
+                    </div>
+
+                    <!-- مستشار 2 -->
+                    <div class="expert-card">
+                        <div class="expert-header">
+                            <img src="expert2.jpg" alt="د. سارة علي">
+                            <div class="expert-status online"></div>
+                        </div>
+                        <div class="expert-info">
+                            <h3>د. سارة علي</h3>
+                            <p class="expert-title">معالجة نفسية</p>
+                            <div class="expert-stats">
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                                <span><i class="fas fa-user-friends"></i> 300+</span>
+                                <span><i class="fas fa-certificate"></i> موثق</span>
+                            </div>
+                            <p class="expert-bio">متخصصة في العلاج النفسي والعلاقات العاطفية</p>
+                            <button class="btn btn-primary">احجز استشارة</button>
+                        </div>
+                    </div>
+
+                    <!-- مستشار 3 -->
+                    <div class="expert-card">
+                        <div class="expert-header">
+                            <img src="expert3.jpg" alt="د. محمد خالد">
+                            <div class="expert-status busy"></div>
+                        </div>
+                        <div class="expert-info">
+                            <h3>د. محمد خالد</h3>
+                            <p class="expert-title">مستشار أسري</p>
+                            <div class="expert-stats">
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                                <span><i class="fas fa-user-friends"></i> 400+</span>
+                                <span><i class="fas fa-certificate"></i> موثق</span>
+                            </div>
+                            <p class="expert-bio">متخصص في حل المشكلات الأسرية والزوجية</p>
+                            <button class="btn btn-primary">احجز استشارة</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- الخدمات المتاحة -->
+            <section class="services-section">
+                <h2>خدماتنا الاحترافية</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-video"></i>
+                        <h3>استشارات مرئية</h3>
+                        <p>جلسات خاصة عبر الفيديو مع مستشار متخصص</p>
+                        <ul class="service-features">
+                            <li>مدة الجلسة: 45 دقيقة</li>
+                            <li>تقرير مفصل بعد الجلسة</li>
+                            <li>متابعة لمدة أسبوع</li>
+                        </ul>
+                        <button class="btn btn-secondary">اعرف المزيد</button>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>محادثات كتابية</h3>
+                        <p>استشارات فورية عبر المحادثات النصية</p>
+                        <ul class="service-features">
+                            <li>رد سريع خلال دقائق</li>
+                            <li>خصوصية تامة</li>
+                            <li>أرشفة المحادثات</li>
+                        </ul>
+                        <button class="btn btn-secondary">اعرف المزيد</button>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>ورش عمل</h3>
+                        <p>جلسات جماعية تفاعلية مع مختصين</p>
+                        <ul class="service-features">
+                            <li>مجموعات صغيرة</li>
+                            <li>تمارين عملية</li>
+                            <li>شهادة حضور</li>
+                        </ul>
+                        <button class="btn btn-secondary">اعرف المزيد</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- الباقات والأسعار -->
+            <section class="pricing-section">
+                <h2>باقات الاستشارات</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card basic">
+                        <div class="pricing-header">
+                            <h3>الأساسية</h3>
+                            <div class="price">
+                                <span class="amount">99</span>
+                                <span class="currency">ريال</span>
+                                <span class="period">/شهرياً</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>جلستان استشاريتان</li>
+                            <li>دعم عبر البريد الإلكتروني</li>
+                            <li>مكتبة الموارد الأساسية</li>
+                        </ul>
+                        <button class="btn btn-primary">اشترك الآن</button>
+                    </div>
+
+                    <div class="pricing-card premium">
+                        <div class="pricing-header">
+                            <h3>المميزة</h3>
+                            <div class="price">
+                                <span class="amount">199</span>
+                                <span class="currency">ريال</span>
+                                <span class="period">/شهرياً</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>4 جلسات استشارية</li>
+                            <li>دعم فوري على مدار الساعة</li>
+                            <li>مكتبة الموارد الكاملة</li>
+                            <li>ورشة عمل شهرية</li>
+                        </ul>
+                        <button class="btn btn-primary">اشترك الآن</button>
+                    </div>
+
+                    <div class="pricing-card vip">
+                        <div class="pricing-header">
+                            <h3>VIP</h3>
+                            <div class="price">
+                                <span class="amount">399</span>
+                                <span class="currency">ريال</span>
+                                <span class="period">/شهرياً</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>جلسات غير محدودة</li>
+                            <li>مستشار شخصي</li>
+                            <li>جميع الخدمات متاحة</li>
+                            <li>أولوية الحجز</li>
+                        </ul>
+                        <button class="btn btn-primary">اشترك الآن</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- الشهادات -->
+            <section class="testimonials-section">
+                <h2>آراء العملاء</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"استفدت كثيراً من الاستشارات. المستشارون محترفون وداعمون."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="client1.jpg" alt="عميل">
+                            <div class="author-info">
+                                <h4>أحمد س.</h4>
+                                <p>عميل منذ 6 أشهر</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"الجلسات المرئية كانت مفيدة جداً وساعدتني في تحسين علاقتي."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="client2.jpg" alt="عميل">
+                            <div class="author-info">
+                                <h4>سارة م.</h4>
+                                <p>عميلة منذ سنة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>روابط مهمة</h4>
+                <ul>
+                    <li><a href="#">كن مستشاراً</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2025 سولي</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="js/professionals.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحادثات - سولي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dating.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Lalezar&family=Aref+Ruqaa&family=Reem+Kufi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .sidebar-header .logo {
+            width: 120px;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .sidebar-header .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.5));
+            animation-play-state: paused;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: glowPulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            padding: 10px 20px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .sidebar-nav a.active {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            margin-right: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="سولي" class="logo" style="width: 120px; margin: 0 auto; display: block;">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dating-chat.html" class="active">
+                        <i class="fas fa-comments"></i>
+                        <span>المحادثات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dating-search.html">
+                        <i class="fas fa-search"></i>
+                        <span>البحث عن شريك</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <!-- شريط التنقل -->
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.png" alt="سولي" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dating.html">المواعدة</a></li>
+                    <li><a href="dating-chat.html" class="active">المحادثات</a></li>
+                    <li><a href="dating-profile.html">الملف الشخصي</a></li>
+                    <li><a href="dating-search.html">البحث عن شريك</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <main class="chat-main">
+            <!-- قسم المحادثات -->
+            <div class="chat-section">
+                <div class="chat-list">
+                    <div class="chat-list-header">
+                        <h3>المحادثات</h3>
+                        <button class="new-chat-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="البحث في المحادثات...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="conversations" id="conversations-list">
+                        <!-- سيتم إضافة المحادثات ديناميكياً -->
+                    </div>
+                </div>
+
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <div class="chat-user-info">
+                            <img src="images/default-avatar.png" alt="صورة المستخدم" class="user-avatar">
+                            <div class="user-details">
+                                <h3>اسم المستخدم</h3>
+                                <span class="online-status">متصل الآن</span>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="video-call-btn"><i class="fas fa-video"></i></button>
+                            <button class="voice-call-btn"><i class="fas fa-phone"></i></button>
+                            <button class="more-options-btn"><i class="fas fa-ellipsis-v"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- سيتم إضافة الرسائل ديناميكياً -->
+                    </div>
+
+                    <div class="chat-input">
+                        <button class="attach-btn"><i class="fas fa-paperclip"></i></button>
+                        <div class="message-input">
+                            <input type="text" placeholder="اكتب رسالتك هنا...">
+                            <button class="emoji-btn"><i class="far fa-smile"></i></button>
+                        </div>
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dating.js"></script>
+</body>
+</html>
